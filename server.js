@@ -23,31 +23,16 @@ const __dirname = dirname(__filename);
 const PORT = 3000;
 const TEXT_EXTENSIONS = ['.txt', '.md', '.text', '.log'];
 
-/**
- * Counts words in text
- * @param {string} text 
- * @returns {number}
- */
 function countWords(text) {
     const words = text.trim().split(/\s+/).filter(word => word.length > 0);
     return words.length;
 }
 
-/**
- * Counts sentences in text
- * @param {string} text 
- * @returns {number}
- */
 function countSentences(text) {
     const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
     return sentences.length;
 }
 
-/**
- * Finds all text files in a directory
- * @param {string} dirPath 
- * @returns {Promise<string[]>}
- */
 async function findTextFiles(dirPath) {
     const files = await readdir(dirPath, { withFileTypes: true });
     const textFiles = [];
@@ -61,12 +46,7 @@ async function findTextFiles(dirPath) {
     return textFiles;
 }
 
-/**
- * Analyzes file asynchronously (without worker threads)
- * @param {string} filePath 
- * @param {number} index 
- * @returns {Promise<Object>}
- */
+// Analyzes file asynchronously (without worker threads)
 async function analyzeFileAsync(filePath, index) {
     const startTime = Date.now();
     console.log(`[Async ${index}] START - Analyzing file: ${filePath}`);
@@ -95,12 +75,7 @@ async function analyzeFileAsync(filePath, index) {
     }
 }
 
-/**
- * Analyzes file using Worker Thread
- * @param {string} filePath 
- * @param {number} workerId 
- * @returns {Promise<Object>}
- */
+// Analyzes file using Worker Thread
 function analyzeFileWithWorker(filePath, workerId) {
     return new Promise((resolve, reject) => {
         const worker = new Worker(join(__dirname, 'fileWorker.js'), {
@@ -123,12 +98,6 @@ function analyzeFileWithWorker(filePath, workerId) {
     });
 }
 
-/**
- * Analyzes all text files in a directory
- * @param {string} dirPath 
- * @param {boolean} useWorkers 
- * @returns {Promise<Object>}
- */
 async function analyzeDirectory(dirPath, useWorkers = true) {
     const requestId = Date.now();
     const startTime = Date.now();
@@ -176,11 +145,6 @@ async function analyzeDirectory(dirPath, useWorkers = true) {
     };
 }
 
-/**
- * Formats results to text format
- * @param {Object} analysisResult 
- * @returns {string}
- */
 function formatResults(analysisResult) {
     const lines = [
         `Directory analysis: ${analysisResult.directory}`,
@@ -207,9 +171,6 @@ function formatResults(analysisResult) {
     return lines.join('\n');
 }
 
-/**
- * HTTP request handler
- */
 const server = http.createServer(async (req, res) => {
     const parsedUrl = new URL(req.url, `http://localhost:${PORT}`);
     

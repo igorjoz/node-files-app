@@ -8,21 +8,11 @@ import { readFile } from 'fs/promises';
 
 const { filePath, workerId } = workerData;
 
-/**
- * Counts words in text
- * @param {string} text 
- * @returns {number}
- */
 function countWords(text) {
     const words = text.trim().split(/\s+/).filter(word => word.length > 0);
     return words.length;
 }
 
-/**
- * Counts sentences in text (endings: . ! ?)
- * @param {string} text 
- * @returns {number}
- */
 function countSentences(text) {
     // Ignore multiple punctuation marks (for example "..." or "!?")
     const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
