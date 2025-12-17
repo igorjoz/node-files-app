@@ -1,0 +1,14 @@
+{
+  "name": "node-files-app",
+  "version": "1.0.0",
+  "description": "NodeJS app to analyze text files (word and sentence count)",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node server.js"
+  },
+  "keywords": ["nodejs", "worker_threads", "file-analysis"],
+  "author": "",
+  "license": "ISC"
+}
