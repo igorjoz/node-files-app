@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text File Analyzer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .endpoint {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        code {
+            background: #e0e0e0;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        .example {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Text File Analyzer</h1>
+    <p>Server analyzes text files (.txt, .md, .text, .log) in a given directory.</p>
+    
+    <div class="endpoint">
+        <h3>Endpoint:</h3>
+        <code>GET /analyze?dir=&lt;path&gt;&amp;useWorkers=true|false</code>
+        
+        <h4>Parameters:</h4>
+        <ul>
+            <li><strong>dir</strong> (required) - path to directory</li>
+            <li><strong>useWorkers</strong> (optional) - true = Worker Threads, false = Async (default: true)</li>
+        </ul>
+    </div>
+    
+    <div class="example">
+        <h3>Examples:</h3>
+        <ul>
+            <li><a href="/analyze?dir=./test-files">/analyze?dir=./test-files</a> (with Worker Threads)</li>
+            <li><a href="/analyze?dir=./test-files&useWorkers=false">/analyze?dir=./test-files&useWorkers=false</a> (without Worker Threads)</li>
+        </ul>
+    </div>
+</body>
+</html>
