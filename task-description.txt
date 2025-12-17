@@ -1,0 +1,6 @@
+ Zadanie 8: NodeJS 10%
+
+Zrealizować aplikacje serwerową, która dla podanego katalogu wyszuka wszystkie pliki tekstowe i  dla każdego z nich policzy slowa oraz zdania a następnie zwroci wynik w postaci tekstowego spisu  nazwa pliku - liczba słów  -  liczba zdan. 
+Operacja na plikach powinny być wykonane asynchronicznie
+ew konfiguowalnie  dla każdego z plków powinien być tworzony wątek (np. worker_threads klasa Worker) +5%
+Operacje początek/koniec zlecenia (+informacja o liczbie wątków) powinny być logowane by moża było zaobserwować równoległość przetwarzania zleceń
